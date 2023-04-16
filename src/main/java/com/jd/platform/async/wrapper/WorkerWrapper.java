@@ -332,7 +332,7 @@ public class WorkerWrapper<T, V> {
             if (!compareAndSetState(INIT, WORKING)) {
                 return workResult;
             }
-
+            // 执行任务前置处理
             callback.begin();
 
             //执行耗时操作
@@ -455,7 +455,7 @@ public class WorkerWrapper<T, V> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)  {
+        if (this == o) {
             return true;
         }
         if (o == null || getClass() != o.getClass()) {

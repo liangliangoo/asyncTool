@@ -35,6 +35,7 @@ public class Async {
         Async.executorService = executorService;
         //定义一个map，存放所有的wrapper，key为wrapper的唯一id，value是该wrapper，可以从value中获取wrapper的result
         Map<String, WorkerWrapper> forParamUseWrappers = new ConcurrentHashMap<>();
+        // 本质也是调用CompletableFuture 实现任务的编排
         CompletableFuture[] futures = new CompletableFuture[workerWrappers.size()];
         for (int i = 0; i < workerWrappers.size(); i++) {
             WorkerWrapper wrapper = workerWrappers.get(i);
