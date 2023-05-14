@@ -3,6 +3,8 @@ package com.xiaoxiong.wrapper;
 import com.google.common.collect.Lists;
 import com.jd.platform.async.executor.Async;
 import com.jd.platform.async.wrapper.WorkerWrapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +22,8 @@ import java.util.function.Supplier;
  * @Version 1.0
  */
 public class CompletableFutureUtils {
+
+    public static final Logger LOGGER = LoggerFactory.getLogger(CompletableFutureUtils.class);
 
     private static final String prefix = "completableFutureName-";
     private static final Long TIMEOUT = 2000l;
@@ -88,7 +92,7 @@ public class CompletableFutureUtils {
         return new WorkerWrapper.Builder<P, R>()
                 .id(workName)
                 .worker((params, allWrappers) -> {
-                    System.out.println(params);
+                    LOGGER.debug("buildWorkWrapper params {}", params);
                     return function.apply(params);
                 })
                 .param(param)
