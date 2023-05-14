@@ -14,7 +14,7 @@ class CompletableFutureUtilsTest {
     void doParallelTask_test() throws ExecutionException, InterruptedException {
         List<String> strs = CompletableFutureUtils.doParallelTask(Lists.newArrayList(s -> "test", s1 -> "test1", s2 -> "test2"), Lists.newArrayList("test", "test1", "test3"));
         System.out.println(strs.size());
-        System.out.println(strs.get(0));
+        System.out.println(strs.get(0));    
     }
 
 
